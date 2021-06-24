@@ -1,0 +1,8 @@
+#items{
+  grid-area:a;
+  text-align:center;
+}
+#items .item{
+  display:inline-block;
+  margin:0 .5em;
+}

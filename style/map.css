@@ -1,0 +1,29 @@
+#map{
+  grid-area:c;
+  display:flex;
+  flex-flow:column;
+  align-items:center;
+}
+#map #world{
+  vertical-align:top;
+  margin:0;
+  position:relative;
+}
+#map #world img{
+  width:500px;
+  height:auto;
+}
+#map #world .marker{
+  position:absolute;
+  width:50px;
+  height:50px;
+  border:red solid 5px;
+  border-radius:50px;
+  animation:marker 3s infinite;
+}
+
+@keyframes marker{
+  0%{opacity:0;}
+  50%{opacity:1;}
+  100%{opacity:0;}
+}

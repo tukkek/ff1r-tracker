@@ -1,0 +1,27 @@
+body{
+  display:grid;
+  grid-template:'a c'
+                'b c';
+  width:100%;
+  height:100%;
+  background-color:black;
+  margin:0;
+  padding:0;
+  color:white;
+  font-family:monospace;
+  font-size:larger;
+}
+body>*{
+  background-color:darkblue;
+  border:white 2px solid;
+  border-radius:.5em;
+  margin:.5em;
+  padding:1em;
+}
+h1{
+  font-size:larger;
+  text-align:center;
+}
+label input, label .name{
+  vertical-align:middle;
+}

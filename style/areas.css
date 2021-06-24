@@ -1,0 +1,19 @@
+#areas{
+  grid-area:b;
+}
+#areas .tabs{
+  margin-bottom:1em;
+}
+#areas .tab{
+  border-bottom:1px dotted white;
+  cursor:pointer;
+}
+#areas .tab.selected{
+  border-bottom:1px solid white;
+}
+#areas .area.ticked{
+  text-decoration:line-through;
+}
+#areas .area:not(.open){
+  color:grey;
+}

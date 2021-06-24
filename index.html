@@ -1,0 +1,42 @@
+<title>Final Fantasy 1 Randomizer progression tracker</title>
+<meta charset='utf8'/>
+<link rel="stylesheet" href="style/page.css"/>
+<link rel="stylesheet" href="style/items.css"/>
+<link rel="stylesheet" href="style/areas.css"/>
+<link rel="stylesheet" href="style/map.css"/>
+<body>
+  <div id='areas'>
+    <h1>Areas</h1>
+    <div class='tabs'>
+      <span class='tab'>Inland</span>
+    </div>
+    <template class='area'>
+      <div class='area created'>
+        <label><input type='checkbox'/><span class='name'></span></label>
+      </div>
+    </template>
+  </div>
+  <div id='items'>
+    <h1>Key items</h1>
+    <template class='item'>
+      <div class='item'>
+        <label><input type='checkbox'/><span class='name'></span></label>
+      </div>
+    </template>
+  </div>
+  <div id='map'>
+    <h1>Map</h1>
+    <div id='world'>
+      <template class='marker'><div class='marker created' alt=''></div></template>
+      <img src='https://www.retrowalkthroughs.com/final-fantasy-1/wp-content/uploads/sites/2/2014/11/world-map-1500x1364.png'></img>
+    </div>
+  </div>
+</body>
+<script type='module'>
+  import * as areas from './src/view/areas.js'
+  import * as items from './src/view/items.js'
+  import * as map from './src/view/map.js'
+  areas.setup()
+  items.setup()
+  map.setup()
+</script>
