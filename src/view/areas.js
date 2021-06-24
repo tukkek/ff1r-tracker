@@ -12,6 +12,15 @@ function tick(div){
   return true
 }
 
+export function update(){
+  var divs=AREAS.querySelectorAll('div.area.created')
+  for(let d of divs){
+    if(d.area.open) d.classList.add('open')
+    else d.classList.remove('open')
+    let i=d.querySelector('input')
+  }
+}
+
 function select(tab){
   if(tab.classList.contains('selected')) return
   for(let t of TABS) 
@@ -24,18 +33,16 @@ function select(tab){
     let div=AREA.cloneNode(true)
     let label=div.querySelector('.name')
     label.innerHTML=area.name
-    div.querySelector('input').onchange=()=>tick(div)
+    let i=div.querySelector('input')
+    if(area.done){
+      div.classList.toggle('ticked')
+      i.checked=true
+    }
+    i.onchange=()=>tick(div)
     div.area=area
     AREAS.appendChild(div)
   }
-}
-
-export function update(){
-  var divs=AREAS.querySelectorAll('div.area.created')
-  for(let d of divs){
-    if(d.area.open) d.classList.add('open')
-    else d.classList.remove('open')
-  }
+  update()
 }
 
 export function setup(){
