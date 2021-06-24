@@ -2,7 +2,7 @@ import * as area from '../model/area.js'
 import * as map from './map.js'
 
 const AREAS=document.querySelector('#areas')
-const TABS=Array.from(AREAS.querySelectorAll('.tab'))
+const ACTS=Array.from(AREAS.querySelectorAll('.act'))
 const AREA=AREAS.querySelector('template.area').content.children[0]
 
 function tick(div){
@@ -21,33 +21,23 @@ export function update(){
   }
 }
 
-function select(tab){
-  if(tab.classList.contains('selected')) return
-  for(let t of TABS) 
-    t.classList.remove('selected')
-  tab.classList.add('selected')
-  var clear=AREAS.querySelectorAll('div.area.created')
-  for(let c of clear) c.outerHTML=''
-  let act=area.acts[TABS.indexOf(tab)]
-  for(let area of act){
-    let div=AREA.cloneNode(true)
-    let label=div.querySelector('.name')
-    label.innerHTML=area.name
-    let i=div.querySelector('input')
-    if(area.done){
-      div.classList.toggle('ticked')
-      i.checked=true
-    }
-    i.onchange=()=>tick(div)
-    div.area=area
-    AREAS.appendChild(div)
-  }
-  update()
-}
-
 export function setup(){
-  for(let t of TABS) t.onclick=()=>select(t)
-  TABS[0].click()
+  for(let j=0;j<ACTS.length;j++){
+    let act=area.acts[j]
+    for(let area of act){
+      let div=AREA.cloneNode(true)
+      let label=div.querySelector('.name')
+      label.innerHTML=area.name
+      let i=div.querySelector('input')
+      if(area.done){
+        div.classList.toggle('ticked')
+        i.checked=true
+      }
+      i.onchange=()=>tick(div)
+      div.area=area
+      ACTS[j].appendChild(div)
+    }
+  }
   update()
 }
 

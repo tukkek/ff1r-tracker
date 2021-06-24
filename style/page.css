@@ -10,7 +10,6 @@ body{
   color:white;
   font-family:monospace;
   font-size:larger;
-  grid-template-rows:30% 70%;
 }
 body>*{
   background-color:darkblue;
