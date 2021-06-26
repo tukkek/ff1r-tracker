@@ -35,6 +35,11 @@ export var adamant=new Item('Adamant')
 
 export var lute=new Item('Lute')
 
+export var earthorb=new Item('Earth orb')
+export var fireorb=new Item('Fire orb')
+export var waterorb=new Item('Water orb')
+export var windorb=new Item('Wind orb')
+
 export var items=[
   princess,bridge,ship,crown,crystal,herb,key,tnt,
   canal,ruby,vampire,rod,
@@ -42,6 +47,11 @@ export var items=[
   bottle,oxyale,
   slab,translatedslab,chime,cube,adamant,
   lute,
+  earthorb,fireorb,waterorb,windorb,
 ]
+
+export var skiporbs=new Item('Skip orbs (Treasure Hunt mode)')
+
+export var extra=[skiporbs]
 
 items.sort((a,b)=>a.name.localeCompare(b.name))

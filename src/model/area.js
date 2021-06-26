@@ -12,6 +12,20 @@ class Area{
   get open(){return !this.keys.find(k=>!k.acquired)}
 }
 
+class TempleOfFiendsRevisited extends Area{
+  constructor(){
+    super('Temple of fiends (II)',756,637)
+    this.keys=[item.lute,item.key,
+      item.earthorb,item.fireorb,item.waterorb,item.windorb,]
+    this.shardhunt=[item.lute,item.key,item.skiporbs,]
+  }
+  
+  //TODO do you really need lute and key on shard hunt? assuming so
+  get open(){
+    return super.open||!this.shardhunt.find(k=>!k.acquired)
+  }
+}
+
 var inland=[
   new Area('Temple of fiends',756,637),
   new Area('Coneria castle',890,848,[item.princess]),
@@ -54,6 +68,6 @@ var mirage=[
   new Area("Dwarf cave (Adamant)",590,830,[item.adamant]),
 ]
 
-var chaos=[new Area('Temple of fiends (II)',756,637,[item.lute,item.key]),]
+var chaos=[new TempleOfFiendsRevisited()]
 
 export var acts=[inland,earthcave,volcano,seashrine,mirage,chaos]
