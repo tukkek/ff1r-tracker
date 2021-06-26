@@ -4,8 +4,9 @@ import * as map from './map.js'
 
 const ITEMS=document.querySelector('#items')
 const ITEM=ITEMS.querySelector('template.item').content.children[0]
-const MAIN=ITEMS.querySelector('#items .main')
 const EXTRA=ITEMS.querySelector('#items .extra')
+const MAIN=ITEMS.querySelector('#items .main')
+const ORBS=ITEMS.querySelector('#items .orbs')
 
 function click(item){
   item.acquired=!item.acquired
@@ -25,6 +26,7 @@ function populate(items,container){
 }
 
 export function setup(){
-  populate(item.items,MAIN)
   populate(item.extra,EXTRA)
+  populate(item.items,MAIN)
+  populate(item.orbs,ORBS)
 }

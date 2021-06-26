@@ -5,7 +5,7 @@
   display:grid;
   grid-auto-flow:row;
   grid-template-columns:repeat(3,auto);
-  height:100%;
+  grid-gap:1em;
 }
 #areas h2{
   font-size:1em;

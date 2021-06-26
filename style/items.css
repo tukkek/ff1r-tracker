@@ -7,6 +7,6 @@
   display:inline-block;
   margin:0 .5em;
 }
-#items hr{
-  width:90%;
+#items>div{
+  margin:.5em 0;
 }
