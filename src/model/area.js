@@ -89,6 +89,18 @@ class CrescentLake extends Area{
   }
 }
 
+class CastleOfOrdeals extends Area{
+  constructor(){
+    super("Castle of ordeal",800,200,[item.crown])
+    this.route=[[item.ship,item.canal,item.canoe],[item.airship,item.canoe]]
+  }
+  
+  get open(){
+    this.keys=item.earlyordeals.acquired?[]:[item.crown]
+    return super.open
+  }
+}
+
 var inland=[
   new Area('Temple of fiends',756,637),
   new Corneria('Coneria castle',[item.princess]),
@@ -121,8 +133,7 @@ var volcano=[
     [[item.ship,item.canoe],[item.airship],[item.earlyprogress,item.canoe]]),
   new Area("Ice cave",1200,1000,[],
     [[item.bridge,item.canoe],[item.airship],[item.earlyprogress,item.canoe]]),
-  new Area("Castle of ordeal",800,200,[item.crown],
-    [[item.ship,item.canal,item.canoe],[item.airship,item.canoe]]),
+  new CastleOfOrdeals(),
   new Area("Bahamut's lair",600,300,[item.tail],[[item.airship]]),
 ]
 
