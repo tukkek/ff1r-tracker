@@ -1,9 +1,16 @@
 class Item{
-  constructor(name){
+  constructor(name,description=false,acquired=false){
     this.name=name
-    this.acquired=false
+    this.description=description
+    this.acquired=acquired
   }
 }
+
+export var skiporbs=new Item('Skip orbs','Treasure Hunt mode')
+export var earlyprogress=new Item('Early progress','Early access to Dwarf Cave and Crescent Lake',true)
+export var northdocks=new Item('Northern docks','Access Sea Shrine and Mirage with the Ship',true)
+
+export var options=[skiporbs,earlyprogress,northdocks]
 
 export var princess=new Item('Princess')
 export var bridge=new Item('Bridge')
@@ -16,12 +23,12 @@ export var tnt=new Item('TNT')
 
 export var canal=new Item('Canal')
 export var ruby=new Item('Ruby')
-export var vampire=new Item('Vampire')
 export var rod=new Item('Rod')
 
 export var lich=new Item('Lich')
 export var canoe=new Item('Canoe')
 export var floater=new Item('Floater')
+export var airship=floater
 export var tail=new Item('Tail')
 
 export var bottle=new Item('Bottle')
@@ -35,10 +42,9 @@ export var adamant=new Item('Adamant')
 
 export var lute=new Item('Lute')
 
-
 export var items=[
   princess,bridge,ship,crown,crystal,herb,key,tnt,
-  canal,ruby,vampire,rod,
+  canal,ruby,rod,
   lich,canoe,floater,tail,
   bottle,oxyale,
   slab,translatedslab,chime,cube,adamant,
@@ -52,8 +58,5 @@ export var windorb=new Item('Wind orb')
 
 export var orbs=[earthorb,fireorb,waterorb,windorb,]
 
-export var skiporbs=new Item('Skip orbs (Treasure Hunt mode)')
-
-export var extra=[skiporbs]
-
-items.sort((a,b)=>a.name.localeCompare(b.name))
+for(let array of [options,items,orbs])
+  array.sort((a,b)=>a.name.localeCompare(b.name))

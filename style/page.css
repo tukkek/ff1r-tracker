@@ -16,7 +16,7 @@ body>*{
   border:white 2px solid;
   border-radius:.5em;
   margin:.5em;
-  padding:1em;
+  padding:0 1em;
 }
 h1{
   font-size:larger;

@@ -1,15 +1,23 @@
 import * as item from './item.js'
 
 class Area{
-  constructor(name,x,y,keys=[]){
+  constructor(name,x,y,keys=[],route=false){
     this.name=name
     this.x=x
     this.y=y
     this.keys=keys
+    this.route=route
     this.done=false
   }
   
-  get open(){return !this.keys.find(k=>!k.acquired)}
+  get open(){
+    if(this.keys.find(k=>!k.acquired)) return false
+    if(!this.route) return true
+    console.log(this.name,this.route)
+    for(let a of this.route)
+      if(!a.find(k=>!k.acquired)) return true
+    return false
+  }
 }
 
 class TempleOfFiendsRevisited extends Area{
@@ -21,51 +29,91 @@ class TempleOfFiendsRevisited extends Area{
   }
   
   //TODO do you really need lute and key on shard hunt? assuming so
-  get open(){
-    return super.open||!this.shardhunt.find(k=>!k.acquired)
+  get open(){return super.open||!this.shardhunt.find(k=>!k.acquired)}
+}
+
+class DwarfCave extends Area{
+  constructor(name,keys=[]){
+    super(name,590,830,keys)
+    this.route=[[item.earlyprogress],[item.ship],[item.airship]]
+  }
+}
+
+class EarthCave extends Area{
+  constructor(name,keys=[]){
+    super(name,380,1010,keys)
+    this.route=[[item.ship,item.canal],[item.airship]]
+  }
+}
+
+class Corneria extends Area{
+  constructor(name,keys=[]){
+    super(name,890,848,keys)
+  }
+}
+
+class Melmond extends Area{
+  constructor(name,keys=[]){
+    super(name,480,850,keys)
+    this.route=[[item.ship,item.canal],[item.airship]]
   }
 }
 
 var inland=[
   new Area('Temple of fiends',756,637),
-  new Area('Coneria castle',890,848,[item.princess]),
-  new Area('Pravoka',1227,768,[item.bridge]),
-  new Area('Marsh cave',600,1300,[item.ship]),
-  new Area('Northwest castle',600,1000,[item.ship,item.crown]),
-  new Area("Matoya's cave",980,610,[item.bridge,item.crystal]),
-  new Area("Elfland castle",800,1200,[item.ship,item.herb]),
-  new Area("Corneria castle (chests)",890,850,[item.key]),
-  new Area("Dwarf cave",590,830,[item.ship,item.tnt]),
+  new Corneria('Coneria castle',[item.princess]),
+  new Area('Pravoka',1227,768,[],
+    [[item.ship],[item.airship],[item.bridge],[item.earlyprogress,item.canoe]]),
+  new Area('Marsh cave',600,1300,[],
+    [[item.ship],[item.airship],[item.earlyprogress,item.canoe]]),
+  new Area('Northwest castle',600,1000,[item.crown],
+    [[item.ship],[item.airship],[item.earlyprogress,item.bridge,item.canoe]]),
+  new Area("Matoya's cave",980,610,[item.crystal],
+    [[item.bridge],[item.ship],[item.airship],[item.earlyprogress,item.canoe]]),
+  new Area("Elfland castle",800,1200,[item.herb],
+    [[item.ship],[item.airship],[item.earlyprogress,item.canoe]]),
+  new Corneria("Corneria castle (chests)",[item.key]),
+  new DwarfCave("Dwarf cave",[item.tnt]),
 ]
 
 var earthcave=[
-  new Area("Melmond",480,850,[item.ship,item.canal]),
-  new Area("Earth Cave",380,1010),
-  new Area("Titan's tunnel",260,930,[item.ruby]),
-  new Area("Sarda's cave",180,1030,[item.vampire]),
-  new Area("Earth Cave (II)",380,1010,[item.rod]),
+  new Melmond("Melmond",[]),
+  new EarthCave("Earth Cave"),
+  new Area("Titan's tunnel",260,930,[],
+    [[item.ship,item.canal],[item.airship]]),
+  new Area("Sarda's cave",180,1030,[],
+    [[item.ship,item.canal,item.ruby],[item.airship]]),
+  new EarthCave("Earth Cave (II)",[item.rod]),
 ]
 
 var volcano=[
-  new Area("Crescent lake",1300,1200,[item.lich]),
-  new Area("Volcano",1100,1100,[item.canoe]),
-  new Area("Ice cave",1200,1000,[item.canoe]),
-  new Area("Castle of ordeal",800,200,[item.crown,item.floater]),
-  new Area("Bahamut's lair",600,300,[item.floater,item.tail]),
+  new Area("Crescent lake",1300,1200,[item.lich],
+    [[item.ship,item.canal],[item.ship,item.canoe],[item.airship],[item.earlyprogress,item.canoe]]),
+  new Area("Volcano",1100,1100,[],
+    [[item.ship,item.canoe],[item.airship],[item.earlyprogress,item.canoe]]),
+  new Area("Ice cave",1200,1000,[],
+    [[item.bridge,item.canoe],[item.airship],[item.earlyprogress,item.canoe]]),
+  new Area("Castle of ordeal",800,200,[item.crown],
+    [[item.ship,item.canal,item.canoe],[item.airship,item.canoe]]),
+  new Area("Bahamut's lair",600,300,[item.tail],[[item.airship]]),
 ]
 
 var seashrine=[
-  new Area("Caravan",200,200,[item.floater]),
-  new Area("Gaia",1300,100,[item.floater,item.bottle]),
-  new Area("Sea shrine",400,200,[item.oxyale]),
+  new Area("Caravan",200,200,[],
+    [[item.airship],[item.northdocks,item.ship,item.canal,item.canoe]]),
+  new Area("Gaia",1300,100,[item.bottle],[[item.airship]]),
+  new Area("Sea shrine",400,200,[item.oxyale],
+    [[item.airship,item.canoe],[item.northdocks,item.ship,item.canal]]),
 ]
 
 var mirage=[
-  new Area("Melmond",480,850,[item.slab]),
-  new Area("Lefein",1400,500,[item.floater,item.translatedslab]),
-  new Area("Waterfall",300,100,[item.canoe]),
-  new Area("Mirage tower",1100,300,[item.chime,item.cube]),
-  new Area("Dwarf cave (Adamant)",590,830,[item.adamant]),
+  new Melmond("Melmond (II)",[item.slab]),
+  new Area("Lefein",1400,500,[item.translatedslab],[[item.airship]]),
+  new Area("Waterfall",300,100,[],
+    [[item.airship,item.canoe],[item.northdocks,item.ship,item.canal,item.canoe]]),
+  new Area("Mirage tower",1100,300,[item.chime,item.cube],
+    [[item.airship],[item.ship,item.northdocks,item.canal]]),
+  new DwarfCave("Dwarf cave (Adamant)",[item.adamant]),
 ]
 
 var chaos=[new TempleOfFiendsRevisited()]

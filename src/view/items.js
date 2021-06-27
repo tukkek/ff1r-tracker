@@ -4,7 +4,7 @@ import * as map from './map.js'
 
 const ITEMS=document.querySelector('#items')
 const ITEM=ITEMS.querySelector('template.item').content.children[0]
-const EXTRA=ITEMS.querySelector('#items .extra')
+const OPTIONS=ITEMS.querySelector('#items .options')
 const MAIN=ITEMS.querySelector('#items .main')
 const ORBS=ITEMS.querySelector('#items .orbs')
 
@@ -20,13 +20,16 @@ function populate(items,container){
     let div=ITEM.cloneNode(true)
     let n=div.querySelector('.name')
     n.innerHTML=i.name
-    div.querySelector('input').onchange=()=>click(i)
+    let checkbox=div.querySelector('input')
+    checkbox.checked=i.acquired
+    checkbox.onchange=()=>click(i)
+    if(i.description) div.title=i.description
     container.appendChild(div)
   }
 }
 
 export function setup(){
-  populate(item.extra,EXTRA)
+  populate(item.options,OPTIONS)
   populate(item.items,MAIN)
   populate(item.orbs,ORBS)
 }
