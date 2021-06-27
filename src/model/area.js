@@ -13,7 +13,6 @@ class Area{
   get open(){
     if(this.keys.find(k=>!k.acquired)) return false
     if(!this.route) return true
-    console.log(this.name,this.route)
     for(let a of this.route)
       if(!a.find(k=>!k.acquired)) return true
     return false
@@ -50,12 +49,43 @@ class Corneria extends Area{
   constructor(name,keys=[]){
     super(name,890,848,keys)
   }
+  
+  get open(){
+    if(this.keys[0]==item.princess&&item.earlyitems.acquired)
+      return true
+    return super.open
+  }
 }
 
 class Melmond extends Area{
   constructor(name,keys=[]){
     super(name,480,850,keys)
     this.route=[[item.ship,item.canal],[item.airship]]
+  }
+}
+
+class SardasCave extends Area{
+  constructor(){
+    super("Sarda's cave",180,1030,[item.vampire])
+    this.route=[[item.ship,item.canal,item.ruby],[item.airship]]
+  }
+  
+  get open(){
+    this.keys=item.earlyitems.acquired?[]:[item.vampire]
+    return super.open
+  }
+}
+
+class CrescentLake extends Area{
+  constructor(){
+    super("Crescent lake",1300,1200,[item.lich])
+    this.route=[[item.ship,item.canal],[item.ship,item.canoe],[item.airship],
+      [item.earlyprogress,item.canoe]]
+  }
+  
+  get open(){
+    this.keys=item.earlyitems.acquired?[]:[item.lich]
+    return super.open
   }
 }
 
@@ -81,14 +111,12 @@ var earthcave=[
   new EarthCave("Earth Cave"),
   new Area("Titan's tunnel",260,930,[],
     [[item.ship,item.canal],[item.airship]]),
-  new Area("Sarda's cave",180,1030,[],
-    [[item.ship,item.canal,item.ruby],[item.airship]]),
+  new SardasCave(),
   new EarthCave("Earth Cave (II)",[item.rod]),
 ]
 
 var volcano=[
-  new Area("Crescent lake",1300,1200,[item.lich],
-    [[item.ship,item.canal],[item.ship,item.canoe],[item.airship],[item.earlyprogress,item.canoe]]),
+  new CrescentLake(),
   new Area("Volcano",1100,1100,[],
     [[item.ship,item.canoe],[item.airship],[item.earlyprogress,item.canoe]]),
   new Area("Ice cave",1200,1000,[],

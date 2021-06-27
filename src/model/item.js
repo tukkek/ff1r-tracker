@@ -6,11 +6,13 @@ class Item{
   }
 }
 
-export var skiporbs=new Item('Skip orbs','Treasure Hunt mode')
-export var earlyprogress=new Item('Early progress','Early access to Dwarf Cave and Crescent Lake',true)
+export var earlyprogress=new Item('Open progression','Early access to Dwarf Cave and Crescent Lake',true)
 export var northdocks=new Item('Northern docks','Access Sea Shrine and Mirage with the Ship',true)
+export var earlyitems=new Item('Early items','Early rewards from King, Sarda and Sage',true)
+export var earlyordeals=new Item('Early ordeals','Crown not required for Ordeals',true)
+export var skiporbs=new Item('Treasure hunt','Orbs replaced with shards')
 
-export var options=[skiporbs,earlyprogress,northdocks]
+export var options=[skiporbs,earlyprogress,northdocks,earlyitems,earlyordeals]
 
 export var princess=new Item('Princess')
 export var bridge=new Item('Bridge')
@@ -23,6 +25,7 @@ export var tnt=new Item('TNT')
 
 export var canal=new Item('Canal')
 export var ruby=new Item('Ruby')
+export var vampire=new Item('Vampire')
 export var rod=new Item('Rod')
 
 export var lich=new Item('Lich')
@@ -44,7 +47,7 @@ export var lute=new Item('Lute')
 
 export var items=[
   princess,bridge,ship,crown,crystal,herb,key,tnt,
-  canal,ruby,rod,
+  canal,ruby,vampire,rod,
   lich,canoe,floater,tail,
   bottle,oxyale,
   slab,translatedslab,chime,cube,adamant,
