@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="style/areas.css"/>
 <link rel="stylesheet" href="style/map.css"/>
 <link rel="stylesheet" href="style/resources.css"/>
+<link rel="stylesheet" href="style/hints.css"/>
 <body>
   <div id='items'>
     <h1>Goals</h1>
@@ -41,17 +42,33 @@
     </div>
     <div id='resources'>
       <h1>Resources</h1>
-      <button id='openhints'>Hints tracker</button>
+      <button id='openhints'>Hint tracker</button>
       <a href='https://finalfantasyrandomizer.com/' target='_blank'><button>Randomizer</button></a>
       <button onclick='alert("Pending!")'>Fork me on GitHub!</button>
     </div>
+  </div>
+  <div id='hinttracker' class='hidden'>
+    <h1>Hint tracker</h1>
+    <div id='hints'>
+      <datalist id='itemnames'/>
+      <template class='hint'>
+        <div class='hint'>
+          <input type='textbox' placeholder='Item' class='item'></input>
+          <input type='textbox' placeholder='Location' class='location'></input>
+          <input type='textbox' placeholder='Floor' class='floor'></input>
+        </div>
+      </template>
+    </div>
+    <button class='close'>Close</button>
   </div>
 </body>
 <script type='module'>
   import * as areas from './src/view/areas.js'
   import * as items from './src/view/items.js'
   import * as map from './src/view/map.js'
+  import * as hints from './src/view/hints.js'
   areas.setup()
   items.setup()
   map.setup()
+  hints.setup()
 </script>

@@ -1,0 +1,29 @@
+#hinttracker{
+  position:fixed;
+  width:90%;
+  height:90%;
+  left:50%;
+  top:50%;
+  transform: translateX(-50%) translateY(-50%);
+  display:grid;
+}
+#hinttracker.hidden{
+  display:none;
+}
+#hinttracker #hints{
+  overflow-y:scroll;
+}
+#hinttracker #hints .hint{
+  display:grid;
+  grid-template-columns:repeat(3,auto);
+  grid-gap:.5em;
+  margin:.25em 1em;
+}
+#hinttracker #hints .hint input{
+  width:100%;
+}
+#hinttracker button.close{
+  margin:1em 0em;
+  justify-self:center;
+  align-self:space-around;
+}
