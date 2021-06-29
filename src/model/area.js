@@ -10,28 +10,30 @@ class Area{
     this.done=false
   }
   
+  save(){return this.done}
+  load(data){this.done=data}
+  update(){return}
+  
   get open(){
+    this.update()
     if(this.keys.find(k=>!k.acquired)) return false
     if(!this.route) return true
     for(let a of this.route)
       if(!a.find(k=>!k.acquired)) return true
     return false
   }
-  
-  save(){return this.done}
-  load(data){this.done=data}
 }
 
 class TempleOfFiendsRevisited extends Area{
   constructor(){
-    super('Temple of fiends (II)',756,637)
-    this.keys=[item.lute,item.key,
-      item.earthorb,item.fireorb,item.waterorb,item.windorb,]
-    this.shardhunt=[item.lute,item.key,item.skiporbs,]
+    super('Temple of fiends (II)',756,637,false)
   }
   
-  //TODO do you really need lute and key on shard hunt? assuming so
-  get open(){return super.open||!this.shardhunt.find(k=>!k.acquired)}
+  update(){
+    this.keys=[item.lute,item.key]
+    if(!item.skiporbs.acquired)
+      this.keys.push(...item.orbs)
+  }
 }
 
 class DwarfCave extends Area{
@@ -51,12 +53,12 @@ class EarthCave extends Area{
 class Corneria extends Area{
   constructor(name,keys=[]){
     super(name,890,848,keys)
+    this.visit=keys[0]==item.princess?1:2
   }
   
-  get open(){
-    if(this.keys[0]==item.princess&&item.earlyitems.acquired)
-      return true
-    return super.open
+  update(){
+    if(this.visit==1)
+      this.keys=item.earlyitems.acquired?[]:[item.princess]
   }
 }
 
@@ -73,10 +75,7 @@ class SardasCave extends Area{
     this.route=[[item.ship,item.canal,item.ruby],[item.airship]]
   }
   
-  get open(){
-    this.keys=item.earlyitems.acquired?[]:[item.vampire]
-    return super.open
-  }
+  update(){this.keys=item.earlyitems.acquired?[]:[item.vampire]}
 }
 
 class CrescentLake extends Area{
@@ -86,10 +85,7 @@ class CrescentLake extends Area{
       [item.earlyprogress,item.canoe]]
   }
   
-  get open(){
-    this.keys=item.earlyitems.acquired?[]:[item.lich]
-    return super.open
-  }
+  update(){this.keys=item.earlyitems.acquired?[]:[item.lich]}
 }
 
 class CastleOfOrdeals extends Area{
@@ -98,10 +94,7 @@ class CastleOfOrdeals extends Area{
     this.route=[[item.ship,item.canal,item.canoe],[item.airship,item.canoe]]
   }
   
-  get open(){
-    this.keys=item.earlyordeals.acquired?[]:[item.crown]
-    return super.open
-  }
+  update(){this.keys=item.earlyordeals.acquired?[]:[item.crown]}
 }
 
 var inland=[

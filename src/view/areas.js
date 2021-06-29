@@ -17,9 +17,14 @@ function tick(div){
 export function update(){
   var divs=AREAS.querySelectorAll('div.area.created')
   for(let d of divs){
-    if(d.area.open) d.classList.add('open')
+    let a=d.area
+    if(a.open) d.classList.add('open')
     else d.classList.remove('open')
-    let i=d.querySelector('input')
+    a.update()
+    let requisites=['access']
+    if(a.keys.length>0)
+      requisites.push(...a.keys.map(k=>k.name))
+    d.title=`Requires: `+requisites.join(', ')
   }
 }
 
