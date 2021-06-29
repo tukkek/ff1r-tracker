@@ -11,8 +11,6 @@
   font-size:1em;
   margin:0;
   margin-bottom:.25em;
-  text-align:center;
-  text-decoration:underline;
 }
 #areas .area.ticked{
   text-decoration:line-through;
