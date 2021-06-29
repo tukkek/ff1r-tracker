@@ -1,6 +1,7 @@
 import * as item from '../model/item.js'
 import * as areas from './areas.js'
 import * as map from './map.js'
+import * as state from '../controller/state.js'
 
 const ITEMS=document.querySelector('#items')
 const ITEM=ITEMS.querySelector('template.item').content.children[0]
@@ -12,6 +13,7 @@ function click(item){
   item.acquired=!item.acquired
   areas.update()
   map.update()
+  state.save()
   return true
 }
 

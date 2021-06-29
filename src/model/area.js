@@ -17,6 +17,9 @@ class Area{
       if(!a.find(k=>!k.acquired)) return true
     return false
   }
+  
+  save(){return this.done}
+  load(data){this.done=data}
 }
 
 class TempleOfFiendsRevisited extends Area{

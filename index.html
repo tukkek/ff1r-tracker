@@ -40,6 +40,10 @@
       <template class='marker'><div class='marker created' alt=''></div></template>
       <a href='https://www.retrowalkthroughs.com/final-fantasy-1/wp-content/uploads/sites/2/2014/11/world-map-1500x1364.png' target='_blank'><img src='https://www.retrowalkthroughs.com/final-fantasy-1/wp-content/uploads/sites/2/2014/11/world-map-1500x1364.png' title='Click to open full-sized map'/></a>
     </div>
+    <div id='controls'>
+      <h1>Controls</h1>
+      <button id='clearstate'>New</button>
+    </div>
     <div id='resources'>
       <h1>Resources</h1>
       <button id='openhints'>Hint tracker</button>
@@ -51,11 +55,12 @@
   <div id='hinttracker' class='hidden'>
     <h1>Hint tracker</h1>
     <div id='hints'>
-      <datalist id='itemnames'/>
+      <datalist id='itemnames'></datalist>
+      <datalist id='areanames'></datalist>
       <template class='hint'>
         <div class='hint'>
           <input type='textbox' placeholder='Item' class='item'></input>
-          <input type='textbox' placeholder='Location' class='area'></input>
+          <input type='textbox' placeholder='Area' class='area'></input>
           <input type='textbox' placeholder='Floor' class='floor'></input>
         </div>
       </template>
@@ -68,8 +73,11 @@
   import * as items from './src/view/items.js'
   import * as map from './src/view/map.js'
   import * as hints from './src/view/hints.js'
+  import * as state from './src/controller/state.js'
+  
+  hints.setup()
+  state.load()
   areas.setup()
   items.setup()
   map.setup()
-  hints.setup()
 </script>

@@ -1,5 +1,6 @@
 import * as area from '../model/area.js'
 import * as map from './map.js'
+import * as state from '../controller/state.js'
 
 const AREAS=document.querySelector('#areas')
 const ACTS=Array.from(AREAS.querySelectorAll('.act'))
@@ -9,6 +10,7 @@ function tick(div){
   div.classList.toggle('ticked')
   div.area.done=div.classList.contains('ticked')
   map.update()
+  state.save()
   return true
 }
 

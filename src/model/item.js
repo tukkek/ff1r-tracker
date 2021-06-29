@@ -4,6 +4,9 @@ class Item{
     this.description=description
     this.acquired=acquired
   }
+  
+  save(){return this.acquired}
+  load(data){this.acquired=data}
 }
 
 export var earlyprogress=new Item('Open progression','Early access to Dwarf Cave and Crescent Lake',true)
@@ -61,5 +64,7 @@ export var windorb=new Item('Wind orb')
 
 export var orbs=[earthorb,fireorb,waterorb,windorb,]
 
-for(let array of [options,items,orbs])
+export var types=[options,items,orbs]
+
+for(let array of types)
   array.sort((a,b)=>a.name.localeCompare(b.name))
