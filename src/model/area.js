@@ -62,13 +62,6 @@ class Corneria extends Area{
   }
 }
 
-class Melmond extends Area{
-  constructor(name,keys=[]){
-    super(name,480,850,keys)
-    this.route=[[item.ship,item.canal],[item.airship]]
-  }
-}
-
 class SardasCave extends Area{
   constructor(){
     super("Sarda's cave",180,1030,[item.vampire])
@@ -124,7 +117,6 @@ var inland=[
 ]
 
 var earthcave=[
-  new Melmond("Melmond",[]),
   new EarthCave("Earth Cave (Vampire)"),
   new TitansTunnel(),
   new SardasCave(),
@@ -150,7 +142,8 @@ var seashrine=[
 ]
 
 var mirage=[
-  new Melmond("Melmond (Slab)",[item.slab]),
+  new Area("Melmond (Slab)",480,850,[item.slab],
+    [[item.ship,item.canal],[item.airship]]),
   new Area("Lefein",1400,500,[item.translatedslab],[[item.airship]]),
   new Area("Waterfall",300,100,[],
     [[item.airship,item.canoe],[item.northdocks,item.ship,item.canal,item.canoe]]),
