@@ -26,7 +26,7 @@ class Area{
 
 class TempleOfFiendsRevisited extends Area{
   constructor(){
-    super('Temple of fiends (II)',756,637,false)
+    super('Temple of fiends',756,637,false)
   }
   
   update(){
@@ -120,15 +120,15 @@ var inland=[
   new Area("Elfland castle",800,1200,[item.herb],
     [[item.ship],[item.airship],[item.earlyprogress,item.canoe]]),
   new Corneria("Corneria castle (chests)",[item.key]),
-  new DwarfCave("Dwarf cave",[item.tnt]),
+  new DwarfCave("Dwarf cave (TNT)",[item.tnt]),
 ]
 
 var earthcave=[
   new Melmond("Melmond",[]),
-  new EarthCave("Earth Cave"),
+  new EarthCave("Earth Cave (Vampire)"),
   new TitansTunnel(),
   new SardasCave(),
-  new EarthCave("Earth Cave (II)",[item.rod]),
+  new EarthCave("Earth Cave (Lich)",[item.rod]),
 ]
 
 var volcano=[
@@ -150,13 +150,13 @@ var seashrine=[
 ]
 
 var mirage=[
-  new Melmond("Melmond (II)",[item.slab]),
+  new Melmond("Melmond (Slab)",[item.slab]),
   new Area("Lefein",1400,500,[item.translatedslab],[[item.airship]]),
   new Area("Waterfall",300,100,[],
     [[item.airship,item.canoe],[item.northdocks,item.ship,item.canal,item.canoe]]),
   new Area("Mirage tower",1100,300,[item.chime,item.cube],
     [[item.airship],[item.ship,item.northdocks,item.canal]]),
-  new DwarfCave("Dwarf cave (Adamant)",[item.adamant]),
+  new DwarfCave("Dwarf cave (adamant)",[item.adamant]),
 ]
 
 var chaos=[new TempleOfFiendsRevisited()]
