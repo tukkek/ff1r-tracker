@@ -14,8 +14,9 @@ export var northdocks=new Item('Northern docks','Access Sea Shrine and Mirage wi
 export var earlyitems=new Item('Early items','Early rewards from King, Sarda and Sage',true)
 export var earlyordeals=new Item('Early ordeals','Crown not required for Ordeals',true)
 export var skiporbs=new Item('Treasure hunt','Orbs replaced with shards')
+export var closedtunnel=new Item('Closed Tunnel',"Titan's Tunnel requires Ruby to enter")
 
-export var options=[skiporbs,earlyprogress,northdocks,earlyitems,earlyordeals]
+export var options=[skiporbs,earlyprogress,northdocks,earlyitems,earlyordeals,closedtunnel]
 
 export var princess=new Item('Princess')
 export var bridge=new Item('Bridge')

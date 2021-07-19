@@ -97,6 +97,15 @@ class CastleOfOrdeals extends Area{
   update(){this.keys=item.earlyordeals.acquired?[]:[item.crown]}
 }
 
+class TitansTunnel extends Area{
+  constructor(){
+    super("Titan's tunnel",260,930)
+    this.route=[[item.ship,item.canal],[item.airship]]
+  }
+  
+  update(){this.keys=item.closedtunnel.acquired?[item.ruby]:[]}
+}
+
 var inland=[
   new Area('Temple of fiends',756,637),
   new Corneria('Coneria castle',[item.princess]),
@@ -117,8 +126,7 @@ var inland=[
 var earthcave=[
   new Melmond("Melmond",[]),
   new EarthCave("Earth Cave"),
-  new Area("Titan's tunnel",260,930,[],
-    [[item.ship,item.canal],[item.airship]]),
+  new TitansTunnel(),
   new SardasCave(),
   new EarthCave("Earth Cave (II)",[item.rod]),
 ]
