@@ -30,7 +30,9 @@ class TempleOfFiendsRevisited extends Area{
   }
   
   update(){
-    this.keys=[item.lute,item.key]
+    this.keys=[item.lute]
+    if(!item.unlockedtofr.acquired)
+      this.keys.push(item.key)
     if(!item.skiporbs.acquired)
       this.keys.push(...item.orbs)
   }
