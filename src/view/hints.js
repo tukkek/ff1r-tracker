@@ -18,6 +18,16 @@ function register(option,list){
   list.appendChild(o)
 }
 
+function open(){
+  TRACKER.classList.toggle('hidden')
+  HINTS.querySelector('.hint.generated .item').focus()
+}
+
+function close(){
+  TRACKER.classList.toggle('hidden')
+  state.save()
+}
+
 export function setup(){
   for(let a of area.acts.flatMap(a=>a)) register(a.name,AREAS)
   for(let i of item.items){
@@ -28,11 +38,8 @@ export function setup(){
     div.querySelector('input.area').setAttribute('list',AREAS.id)
     HINTS.appendChild(div)
   }
-  OPEN.onclick=()=>TRACKER.classList.toggle('hidden')
-  CLOSE.onclick=()=>{
-    TRACKER.classList.toggle('hidden')
-    state.save()
-  }
+  OPEN.onclick=open
+  CLOSE.onclick=close
 }
 
 export function save(){
