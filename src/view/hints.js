@@ -24,9 +24,12 @@ function open(){
 }
 
 function close(){
+  if(TRACKER.classList.contains('hidden')) return
   TRACKER.classList.toggle('hidden')
   state.save()
 }
+
+function escape(e){if(e.key=='Escape'||e.key=='Enter') close()}
 
 export function setup(){
   for(let a of area.acts.flatMap(a=>a)) register(a.name,AREAS)
@@ -40,6 +43,7 @@ export function setup(){
   }
   OPEN.onclick=open
   CLOSE.onclick=close
+  document.addEventListener('keydown',escape)
 }
 
 export function save(){
